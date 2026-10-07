@@ -4,4 +4,5 @@ Leonardo Vieira Silva
 202235038
 
 
-![Diagrama](Diagrama.png)
+![Diagrama](DiagramaEstado.png)
+![Diagrama](DiagramaClasse.png)

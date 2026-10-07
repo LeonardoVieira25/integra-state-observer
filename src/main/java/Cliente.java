@@ -13,15 +13,18 @@ public class Cliente implements Observer {
         return nome;
     }
 
-    private String ultimaAtualizacao;
+    private EstadoPedido ultimaAtualizacao;
 
     @Override
     public void update(Observable o, Object arg) {
-        this.ultimaAtualizacao = arg.toString();
-        // System.out.println("Cliente " + nome + " recebeu atualização: " + ultimaAtualizacao);
+        if (!(arg instanceof EstadoPedido))
+            throw new IllegalArgumentException("Update not supported");
+        this.ultimaAtualizacao = (EstadoPedido) arg;
+        System.out.println("Cliente " + nome + " recebeu atualização: " +
+                ultimaAtualizacao);
     }
 
-    public String getUltimaAtualizacao() {
+    public EstadoPedido getUltimaAtualizacao() {
         return ultimaAtualizacao;
     }
 }

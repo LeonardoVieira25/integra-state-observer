@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +24,16 @@ public class ClienteTest {
 
         pedido.preparar();
         assertEquals(EstadoPedidoPreparando.getInstance(), cliente.getUltimaAtualizacao());
+    }
+
+    @Test
+    void shouldRejectInvalidUpdates() {
+        Cliente cliente = new Cliente("Leonardo");
+        try {
+            cliente.update(null, "invalid");
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("Update not supported", e.getMessage());
+        }
     }
 }
